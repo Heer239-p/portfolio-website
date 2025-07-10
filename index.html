@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hiral Prajapati | MCA Student Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      color: #1e293b;
+      line-height: 1.6;
+      min-height: 120vh; /* thoda lamba page taaki scroll ho */
+    }
+
+    header {
+      background: #152238;
+      color: #a5b8d1;
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 3px solid #22d3ee;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #e0e7ff;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #a5b8d1;
+      margin-bottom: 1rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #a5b8d1;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 6px;
+      text-decoration: none;
+      position: relative;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0%;
+      height: 3px;
+      background-color: #22d3ee;
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #0f172a;
+      background-color: #22d3ee;
+      box-shadow: 0 4px 12px rgba(34, 211, 238, 0.5);
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    section {
+      max-width: 900px;
+      background: white;
+      margin: 2rem auto;
+      padding: 2rem 2.5rem;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(34, 211, 238, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    section:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 36px rgba(34, 211, 238, 0.3);
+    }
+
+    section h2 {
+      color: #152238;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    section p {
+      font-size: 1.1rem;
+      color: #475569;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .card {
+      background: #e0f2fe;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(34, 211, 238, 0.3);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+
+    .card:hover {
+      background: #22d3ee;
+      color: white;
+      box-shadow: 0 6px 20px rgba(34, 211, 238, 0.7);
+    }
+
+    .card strong {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 0.7rem;
+      font-weight: 700;
+    }
+
+    .card a {
+      color: #075985;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .card a:hover {
+      color: #e0f2fe;
+      text-decoration: underline;
+    }
+
+    #contact p {
+      font-size: 1.1rem;
+      text-align: center;
+      margin: 0.8rem 0;
+      color: #475569;
+    }
+
+    #contact {
+      padding-bottom: 150px; /* extra padding so scroll detects this section properly */
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .contact-links a {
+      color: #22d3ee;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .contact-links a:hover {
+      color: #0f172a;
+      background-color: #22d3ee;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(34, 211, 238, 0.4);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: #152238;
+      color: #a5b8d1;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        gap: 1.2rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 1.5rem 1.5rem;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Hiral Prajapati</h1>
+    <p>MCA Student | Web Developer | Tech Enthusiast</p>
+    <nav>
+      <a href="#about" class="nav-link active">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#certificates" class="nav-link">Certificates</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p style="max-width: 600px; margin: auto; text-align: center; font-size: 1.1rem; color: #444;">
+      MCA student with strong programming skills and a passion for developing scalable software solutions.  
+      Committed to continuous learning and applying modern technologies to solve real-world problems efficiently.
+    </p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="cards">
+      <div class="card">HTML, CSS, JavaScript</div>
+      <div class="card">Angular, Bootstrap</div>
+      <div class="card">Python (Basic)</div>
+      <div class="card">Android Studio (Kotlin)</div>
+      <div class="card">Git & GitHub (Basic)</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="cards">
+      <div class="card">
+        <strong>Stopwatch Web App</strong><br/>
+        <a href="https://github.com/Heer239-p/SCT_WD_2/blob/main/index.html" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      </div>
+      <div class="card">
+        <strong>Calculator App (Android - Kotlin)</strong><br/>
+        <a href="https://github.com/Heer239-p/My-Calculator-App" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      </div>
+      <div class="card">
+        <strong>Tic Tac Toe Game</strong><br/>
+        <a href="https://github.com/Heer239-p/SCT_WD_3" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      </div>
+      <div class="card">
+        <strong>To-Do List Web App</strong><br/>
+        <a href="https://github.com/Heer239-p/SCT_WD_4" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      </div>
+        <div class="card">
+        <strong>Flower Shop Web App</strong><br/>
+        <a href="https://github.com/Heer239-p/SCT_WD_4" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="certificates">
+    <h2>Certificates</h2>
+    <div class="cards">
+      <!-- <div class="card">Internship Completion Certificate - Skill Craft</div> -->
+      <!-- <div class="card"></div>
+      <div class="card"></div> -->
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Get In Touch</h2>
+    <p>I’m open to opportunities and collaborations. Let’s connect!</p>
+    <div class="contact-links">
+      <a href="hiralprajapati2309@gmail.com">📧 Email Me</a>
+      <a href="https://www.linkedin.com/in/hiral-prajapati-17b10434b" target="_blank" rel="noopener noreferrer">🔗 LinkedIn Profile</a>
+      <a href="https://github.com/Heer239-p" target="_blank" rel="noopener noreferrer">💻 GitHub Profile</a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Hiral Prajapati. All rights reserved.
+  </footer>
+
+  <script>
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('section');
+    const header = document.querySelector('header');
+    const headerHeight = header.offsetHeight;
+
+    function setActiveLink() {
+      const scrollPos = window.scrollY + headerHeight + 5; // small offset for better accuracy
+      let currentSectionId = sections[0].id; // default to first section
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+
+        if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+          currentSectionId = section.id;
+        }
+      });
+
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === `#${currentSectionId}`) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const target = document.querySelector(targetId);
+        const offsetPosition = target.offsetTop - headerHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        });
+      });
+    });
+
+    window.addEventListener('scroll', setActiveLink);
+    window.addEventListener('load', setActiveLink);
+  </script>
+
+</body>
+</html>
